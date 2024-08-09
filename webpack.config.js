@@ -1,6 +1,7 @@
 const path = require ('path');
 
 module.exports = {
+    mode:'development',
     entry: './src/index.js', //punto de entrada de la aplicación
     output: {
         filename: 'bundle.js', //nombre del archivo de salida
@@ -26,7 +27,9 @@ module.exports = {
     },
     devtool: 'source-map', //generar mapas de codigo para facilitar la depuración, ayuda a webpack
     devServer: {
-        contentBase: path.resolve(__dirname, 'dist'), //carpeta desde el cual el servidor agarrará los archivos
+        static: {
+            directory: path.resolve(__dirname, 'dist'),
+        },
         compress: true, //habilitar la compresión gzip, archivos pesan menos
         port: 9000, //puerto del servidor de desarrollo
     },
